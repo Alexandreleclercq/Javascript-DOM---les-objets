@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript & DOM : Les Objets - Exercice 5</title>
+    <script>
+      //Énoncé :
+      /*
+        1. Créez une fonction constructeur. Cette fonction vous permettra de construire des objets représentant des robots. Les robots ont tous 6 propriétés : un numéro de série, un nom de modèle, un nom d'usage, une couleur, une matière, un durée de garantie.
+        - Le numéro de série est un nombre. Il doit être fourni pour construire un robot.
+        - Le nom de modèle est un nombre. Il est fixé au départ.
+        - Le nom d'usage est une chaîne de caractère. Il n'est pas fixé au départ.
+        - La couleur est une chaîne de caractère. Elle doit être fournie pour construire un robot.
+        - La matière est une chaîne de caractère. Elle est fixée au départ.
+        - La durée de garantie est une chaîne de caractère. Elle est fixée au départ.
+      */
+
+      // Solution utilisant les factory functions :
+
+      let robot = function (serialNumber, color) {
+        this.serialNumber = serialNumber;
+        this.modelName = "CR101-58";
+        this.useName = "Cleaning Robot";
+        this.color = color;
+        this.material = "Stainless Steel and Gold alloy";
+        this.warrantyPeriod = "2 years starting at date of purchase";
+      };
+
+      let usineRobot = function (serialNumber, color) {
+        return new robot(serialNumber, color);
+      };
+
+      let m67 = usineRobot("123-458-365", "Darksea Blue");
+      let m68 = usineRobot("123-458-366", "Plain Green");
+      let m69 = usineRobot("123-458-367", "Sunset Red");
+      let m70 = usineRobot("123-458-368", "Elvish Light");
+      let m71 = usineRobot("123-458-369", "Darksea Purple");
+      let m72 = usineRobot("123-458-370", "Poo Brown");
+      let m73 = usineRobot("123-458-371", "Magma Red");
+      let m74 = usineRobot("123-458-372", "Magma Orange");
+      let m75 = usineRobot("123-458-373", "Canary Yellow");
+      let m76 = usineRobot("123-458-374", "Oak Brown");
+      let m77 = usineRobot("123-458-375", "Onyx Black");
+      let m78 = usineRobot("123-458-376", "Stainless Silver");
+
+      // Solution utilisant une class constructor function :
+
+      // class Robot {
+      //   constructor(serialNumber, color) {
+      //     this.serialNumber = serialNumber;
+      //     this.modelName = "CR101-58";
+      //     this.useName = "Cleaning Robot";
+      //     this.color = color;
+      //     this.material = "Stainless Steel and Gold alloy";
+      //     this.warrantyPeriod = "2 years starting at date of purchase";
+      //   }
+      // }
+      /*
+        2. Créez 12 robots à l'aide de cette fonction constructeur. Chaque robot aura donc un numéro de série et une couleur différente.
+      */
+      // let m67 = new Robot("123-458-365", "Darksea Blue");
+      // let m68 = new Robot("123-458-366", "Plain Green");
+      // let m69 = new Robot("123-458-367", "Sunset Red");
+      // let m70 = new Robot("123-458-368", "Elvish Light");
+      // let m71 = new Robot("123-458-369", "Darksea Purple");
+      // let m72 = new Robot("123-458-370", "Poo Brown");
+      // let m73 = new Robot("123-458-371", "Magma Red");
+      // let m74 = new Robot("123-458-372", "Magma Orange");
+      // let m75 = new Robot("123-458-373", "Canary Yellow");
+      // let m76 = new Robot("123-458-374", "Oak Brown");
+      // let m77 = new Robot("123-458-375", "Onyx Black");
+      // let m78 = new Robot("123-458-376", "Stainless Silver");
+      /*
+        3. Créez un tableau qui sera le magasin. Ce tableau devra contenir les 12 références vers les 12 objets représentant chacun des 12 robots.
+      */
+      let store = [m67, m68, m69, m70, m71, m72, m73, m74, m75, m76, m77, m78];
+      // console.log("store", store);
+      /*
+        4. Réalisez l'algorithme suivant :
+        POUR CHAQUE robot dans le magasin, AFFECTEZ un nom d'usage qui sera la concaténation du modèle, du numéro de série et de l'index du robot dans le magasin.
+      */
+      let inventory = function () {
+        for (let i = 0; i < store.length; i++) {
+          store[i].useName = `Nom d'usage : ${store[i].modelName} - ${
+            store[i].serialNumber
+          } - Robot inventorié n°${store.indexOf(store[i])}.`;
+        }
+        console.log(store);
+      };
+      inventory();
+
+      //Why is it that if I add this. it doesn't work anymore?
+    </script>
+  </head>
+  <body>
+    <h1>Titre principal</h1>
+    <ul>
+      <li>Premier point</li>
+      <li>Deuxième point</li>
+      <li>Troisième point</li>
+    </ul>
+    <div>
+      <h2><span>1</span>. Titre de la première section</h2>
+      <p><span>1.1</span>. Premier paragraphe de la première section.</p>
+      <p><span>1.2</span>. Deuxième paragraphe de la deuxième section.</p>
+    </div>
+    <div>
+      <h2><span>2</span>. Titre de la deuxième section</h2>
+      <p><span>2.1</span>. Premier paragraphe de la deuxième section.</p>
+      <p><span>2.2</span>. Deuxième paragraphe de la deuxième section.</p>
+    </div>
+    <div>
+      <h2><span>3</span>. Titre de la troisième section</h2>
+      <p><span>3.1</span>. Premier paragraphe de la troisième section.</p>
+      <p><span>3.2</span>. Deuxième paragraphe de la troisième section.</p>
+    </div>
+  </body>
+</html>
